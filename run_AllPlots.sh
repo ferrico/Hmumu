@@ -12,11 +12,9 @@ g++ ./plotter_vbfzll.C -g -o plot `root-config --cflags --glibs`   -lMLP -lXMLIO
 # JEScorrection=up
 # JEScorrection=down
 
-QCDcorrectionARRAY=(nom)
-# up down nom nom)
+QCDcorrectionARRAY=(nom up down nom nom)
 # nom nom nom nom)
-JEScorrectionARRAY=(nom)
-# nom nom up down)
+JEScorrectionARRAY=(nom nom nom up down)
 # nom nom nom nom)
 # bTagWeightJESARRAY=(nom nom nom nom nom up down nom nom)
 # bTagWeightLFARRAY=(nom nom nom nom nom nom nom up down)
