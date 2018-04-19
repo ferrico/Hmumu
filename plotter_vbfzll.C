@@ -2103,7 +2103,7 @@ if (data==1) Nsyst_NoConst = 1;
 //         reader->BookMVA("BDTG", "/afs/cern.ch/user/a/abonavit/private/tesi/CMSSW_8_0_28/src/code/BDTClassification/trainingForRecoveringJune/Classification_BDTG.weights_JuneOption_ll_mass_Mqq_RptHard_DeltaEtaQQ_llPt_llEta_Jet2qPt_EWKHTsoft.xml");
 //         reader->BookMVA("BDTG", "/afs/cern.ch/user/a/abonavit/private/tesi/CMSSW_8_0_28/src/code/BDTClassification/januaryTraining/Classification_BDTG.weights_80000Event_200Tree_4Deep_mll_Mqq_RptHard_llZstar_softN5_llPt_Wmass2_Wpt1.xml");
 //         reader->BookMVA("BDTG", "/scratch/mandorli/Hmumu/restartFromFilippo/CMSSW_8_0_28/src/code/BDTxml/marchTraining/Classification_BDTG.weights_80000Event_100Tree_2Deep_mll_Mqq_RptHard_llZstar_softN5_Wmass1.xml");
-        reader->BookMVA("BDTG", "Classification_BDTG.weights_35000Event_100Tree_2Deep_mll_MqqLog_Rpt_Wmass1_llZstar_softN5_llPt_Wmass2.xml");
+        reader->BookMVA("BDTG", "/afs/cern.ch/work/f/ferrico/private/Hmumu/CMSSW_8_0_28/src/shared_vbfh-huu_code/Classification_BDTG.weights_35000Event_100Tree_2Deep_mll_MqqLog_Rpt_Wmass1_llZstar_softN5_llPt_Wmass2.xml");
 
 //         reader->BookMVA("MLP", "/scratch/mandorli/Hmumu/restartFromFilippo/CMSSW_8_0_28/src/code/BDTxml/aprilTraining/Classification_MLP.weights_35000Event_mll_MqqLog_Rpt_Wmass1_llZstar_softN5_llPt_Wmass2_qgl1qAtanh.xml");
 
