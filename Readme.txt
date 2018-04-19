@@ -5,4 +5,5 @@ How to run the code:
 - in histoFileDir:
   source hadd_histos.sh --> it will merge some files (like DY and SingleTop)
 - in plotCode:
+  create "plotsDirectory" directory
   source plot_nopas.sh ---> it will create validation plots in plotsDirectory
