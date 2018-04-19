@@ -31,7 +31,7 @@ JEScorrectionARRAY=(nom nom nom up down)
 # echo run_plotter_parallel.sh $QCDcorrection $JEScorrection $bTagWeightJEScorrection $bTagWeightLFcorrection;
 # source run_plotter_parallel.sh $QCDcorrection $JEScorrection $bTagWeightJEScorrection $bTagWeightLFcorrection&
 # done
-for i in $(seq 0 1 1); do QCDcorrection=${QCDcorrectionARRAY[$i]}; JEScorrection=${JEScorrectionARRAY[$i]};
+for i in $(seq 0 1 4); do QCDcorrection=${QCDcorrectionARRAY[$i]}; JEScorrection=${JEScorrectionARRAY[$i]};
 echo run_plotter_parallel.sh $QCDcorrection $JEScorrection;
 source run_plotter_parallel.sh $QCDcorrection $JEScorrection
 done
