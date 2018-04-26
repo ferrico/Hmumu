@@ -1427,9 +1427,9 @@ Float_t LHE_weights_scale_wgt[10];
 	TH1F *hBTagMultipliticy = new TH1F("hBTagMultipliticy","", 10, -0.5, 9.5);
 	hBTagMultipliticy->GetXaxis()->SetTitle("hBTagMultipliticy");
 
-	TH1F *hBDIscriminator_CSV = new TH1F("hBDIscriminator_CSV","", 100, -2, 2);
+	TH1F *hBDIscriminator_CSV = new TH1F("hBDIscriminator_CSV","", 30, 0, 1.5);
 	hBDIscriminator_CSV->GetXaxis()->SetTitle("hBDIscriminator_CSV");
-	TH1F *hBDIscriminator_CMVAV2 = new TH1F("hBDIscriminator_CMVAV2","", 100, -2, 2);
+	TH1F *hBDIscriminator_CMVAV2 = new TH1F("hBDIscriminator_CMVAV2","", 60, -1.5, 1.5);
 	hBDIscriminator_CMVAV2->GetXaxis()->SetTitle("hBDIscriminator_CMVAV2");
 
 	TH1F *hbtagWeight = new TH1F("hbtagWeight","", 100, 0, 1);
@@ -1509,14 +1509,14 @@ Float_t LHE_weights_scale_wgt[10];
     TH1F *hThetaStarAbs = new TH1F("hThetaStarAbs","",50,0,1.1);
     hThetaStarAbs->GetXaxis()->SetTitle("|cos(#theta*)|");
 
-    TH1F *hMaxJetBTagCSV = new TH1F("hMaxJetBTagCSV","",60,-0.3,1.);
+    TH1F *hMaxJetBTagCSV = new TH1F("hMaxJetBTagCSV","", 60,-0.3,1.);
     hMaxJetBTagCSV->GetXaxis()->SetTitle("max CSV");
     TH1F *hMaxSecondJetBTagCSV = new TH1F("hMaxSecondJetBTagCSV","",60,-0.3,1.);
     hMaxSecondJetBTagCSV->GetXaxis()->SetTitle("second max CSV");
 
-    TH1F *hMaxJetBTagCMVA = new TH1F("hMaxJetBTagCMVA","",50,-4.,4.);
+    TH1F *hMaxJetBTagCMVA = new TH1F("hMaxJetBTagCMVA","",60, -1.5, 1.5);//50,-4.,4.);
     hMaxJetBTagCMVA->GetXaxis()->SetTitle("tanh^{-1}( max CMVA )");
-    TH1F *hMaxSecondJetBTagCMVA = new TH1F("hMaxSecondJetBTagCMVA","",50,-1.,1.);
+    TH1F *hMaxSecondJetBTagCMVA = new TH1F("hMaxSecondJetBTagCMVA","",60, -1.5, 1.5);//50,-1.,1.);
     hMaxSecondJetBTagCMVA->GetXaxis()->SetTitle("second max CMVA ");
         
     
@@ -1649,6 +1649,17 @@ Float_t LHE_weights_scale_wgt[10];
         hMll_deltaM->GetXaxis()->SetTitle("m(ll) (GeV)");
         hMll_deltaM->GetYaxis()->SetTitle("#DeltaM (GeV)");
 
+
+/////////// cancella //////////
+TH1F* hjet_pt_collezione = new TH1F("jet_pt_collezione", "jet_pt_collezione", 100, 0, 1000);
+TH1F* hjet_pt_index = new TH1F("jet_pt_index", "jet_pt_index", 100, 0, 1000);
+TH1F* hjet_pt_lead = new TH1F("jet_pt_leads", "jet_pt_lead", 100, 0, 1000);
+TH1F* hjet_eta_collezione = new TH1F("jet_eta_collezione", "jet_eta_collezione",50, -2.5, 2.5);
+TH1F* hjet_eta_index = new TH1F("jet_eta_index", "jet_eta_index",50, -2.5, 2.5);
+TH1F* hjet_eta_lead = new TH1F("jet_eta_leads", "jet_eta_lead",50, -2.5, 2.5);
+TH1F* hmaxBTagFilippo = new TH1F("maxBTagFilippo", "maxBTagFilippo", 100, 0, 1);
+
+
         std::vector<TH2F*> histo2D_vector;
         std::vector<std::string> variablesName_in_2D_plot = {"Zll_mass", "deltaM", "Xparton1Log", "Xparton2Log", "RpT", "zStar" };
 
@@ -1673,9 +1684,12 @@ Float_t LHE_weights_scale_wgt[10];
 //         TH1F* histArray[numArray] = { hMqq, hEtaQQ,hHTsoft,hSoft_n2,hSoft_n5,hSoft_n10,hHTsoftEWK,hSoft_n2EWK,hSoft_n5EWK,hSoft_n10EWK,hHTsoftEWK_bdt,hSoft_n2EWK_bdt,hSoft_n5EWK_bdt, hSoft_n10EWK_bdt,hnPVs, hJet1q_pt, hJet1q_eta, hJet1q_ptd, hJet1q_axis2, hJet1q_mult, hJet2q_pt, hJet2q_eta, hJet2q_ptd, hJet2q_axis2, hJet2q_mult, hmet,   hJet1q_leadTrackPt, hJet2q_leadTrackPt, hqq_pt,hV_mass, hqgl, hqgl2, hHll_mass, hHll_pt, hHll_phi, hHll_eta, hrho, hlepton1_pt, hlepton2_pt, hlepton1_eta, hlepton2_eta, hHT, hDeltaRelQQ, hRptHard, hEtaQQSum, hPhiZQ1, hHll_y, hHll_ystar, hHll_zstar, hMqq_log, hlheV_pt, hJet3_pt, hlheHT_log, hPhiQQ, hJets12_pt_log, hJets12_pt, hJet1q_pt_log, hJet2q_pt_log, hbdt, hbdt_atanh,hbdt_atanh2 , hlepton1_iso03, hlepton2_iso03, hveto_jet3pt_nom, hveto_jet3pt_denom, hveto_ht_nom, hveto_ht_denom, hveto_softht_nom, hveto_softht_denom, hveto_softpt_nom, hveto_softpt_denom, hJet2q_phi, hJet1q_pffhi, hNAdJets, hNAdJets_bdt, hJet3_pt_bdt, hAdJetHT_bdt, hNAdJets_bdt2, hJet3_pt_bdt2, hAdJetHT_bdt2,hNAdJets_mjj1, hJet3_pt_mjj1, hAdJetHT_mjj1,hNAdJets_mjj2, hJet3_pt_mjj2, hAdJetHT_mjj2, hHTsoftEWK_bdt2,hSoft_n2EWK_bdt2,hSoft_n5EWK_bdt2, hSoft_n10EWK_bdt2,hHTsoftEWK_mjj1, hSoft_n2EWK_mjj1,hSoft_n5EWK_mjj1,hSoft_n10EWK_mjj1, hHTsoftEWK_mjj2,hSoft_n2EWK_mjj2,hSoft_n5EWK_mjj2,hSoft_n10EWK_mjj2 ,hJet1q_eta_bdt, hJet1q_eta_bdt2, hJet2q_eta_bdt, hJet2q_eta_bdt2, hsoftleadTrackPt, hsoftleadTrackEta, hAdJetHT, hJet3_eta , hJet3_pt_new , hJet3_eta_bdt, hJet3_eta_bdt2, hThetaStar, hMaxJetBTag};
 
         
-        const int numArray= 170;//64+8 
-        TH1F* histArray[numArray] = { /*165*/hMqq, hEtaQQ,hSoft_n2,hSoft_n5,hSoft_n10,hHTsoftEWK,hSoft_n2EWK,hSoft_n5EWK,hSoft_n10EWK,hHTsoftEWK_bdt,hSoft_n2EWK_bdt,hSoft_n5EWK_bdt, hSoft_n10EWK_bdt,hnPVs, hJet1q_pt, hJet1q_eta, hJet1q_ptd, hJet1q_axis2, hJet1q_mult, hJet2q_pt, hJet2q_eta, hJet2q_ptd, hJet2q_axis2, hJet2q_mult, hVtype, hVtypeSim, hmet, hJet1q_leadTrackPt, hJet2q_leadTrackPt, hqq_pt, hqgl, hqgl2,hqglAtanh, hqgl2Atanh, hHll_mass, hHll_pt, hHll_phi, hHll_eta, hrho, hlepton1_pt, hlepton2_pt, hlepton1_eta, hlepton2_eta, hHT, hDeltaRelQQ, hRpt, hRptAtanh, hEtaQQSum, hPhiZQ1, hHll_y, hHll_ystar, hHll_zstar, hMqq_log, hlheV_pt, hlheNpNLO, hJet3_pt, hJet3_pt_log, hlheHT_log, hlheNj, hPhiQQ, hJets12_pt_log, hJets12_pt, hJet1q_pt_log, hJet2q_pt_log, hbdt, hbdt_atanh,hbdt_atanh2 , hlepton1_iso03, hlepton2_iso03, hveto_jet3pt_nom, hveto_jet3pt_denom, hveto_ht_nom, hveto_ht_denom, hveto_softht_nom, hveto_softht_denom, hveto_softpt_nom, hveto_softpt_denom, hJet2q_phi, hJet1q_phi, hNAdJets, hNAdJets_bdt, hJet3_pt_bdt, hAdJetHT_bdt, hNAdJets_bdt2, hJet3_pt_bdt2, hAdJetHT_bdt2, hHTsoftEWK_bdt2,hSoft_n2EWK_bdt2,hSoft_n5EWK_bdt2, hPtSoftJets, hJet1q_eta_bdt, hJet1q_eta_bdt2, hJet2q_eta_bdt, hJet2q_eta_bdt2, hsoftleadTrackPt, hsoftleadTrackEta, hAdJetHT, hJet3_eta, hJet3_etaRatio, hJet3_pt_new , hJet3_eta_bdt, hJet3_eta_bdt2, hBDT_VBF, hBDT_VBF_atanh, hBDT_VBF_atanh_findBinning, hThetaStarJet, hThetaPlanes, hThetaStarJetAtanh, hThetaPlanesAtanh, hThetaStar, hThetaStarAbs, hMaxJetBTagCSV,hweights_weighted,hweights,hdeltaMRel,hdeltaM, hnormalizedDistance_from_mH, hHiggsSister1_Leading_eta,hHiggsSister2_Subleading_eta,hHiggsSister1_Leading_phi,hHiggsSister2_Subleading_phi,hHiggsSister1_Leading_R,hHiggsSister2_Subleading_R,  hMaxJetBTagCMVA,hTotalEnergy,hTotalEnergylog,hWWmass,hDiffmass,hpdgId,hgen_mass,hEnergy_fraction_Parton2_log,hEnergy_fraction_Parton1_log, hmumujj_pt, hmumujj_ptLog, hEnergy_fraction_Parton1,hPz,hPzAbs, hPzAbsLog, hInvariant_MassLog, hInvariant_Mass, hthetastar_W2toHW1, hthetastar_W1toHW2,hthetastar_HtoWW, hEnergy_fraction_Parton2, hVirtual_Wmass1,hVirtual_Wmass2,hVirtual_Wmass1_log,hVirtual_Wmass2_log,hVirtual_Pt1,hVirtual_Pt2, hVirtual_Pt1_log, hVirtual_Pt2_log, hVirtual_eta1,hVirtual_eta2,hTheta_HiggsJ1,hTheta_HiggsJ2,hthetastar_W1,hthetastar_W2, hVirtual_phi1, hVirtual_phi2, hParton_M1,hParton_M2,hMaxSecondJetBTagCSV, hMaxSecondJetBTagCMVA, hSelectionCuts,
-        							hMCWeight, hBTagMultipliticy, hBDIscriminator_CSV, hBDIscriminator_CMVAV2, hbtagWeight}; 
+        const int numArray= 177;//64+8 
+        TH1F* histArray[numArray] = { /*165*/hMqq, hEtaQQ,hSoft_n2,hSoft_n5,hSoft_n10,hHTsoftEWK,hSoft_n2EWK,hSoft_n5EWK,hSoft_n10EWK,hHTsoftEWK_bdt,hSoft_n2EWK_bdt,hSoft_n5EWK_bdt, hSoft_n10EWK_bdt,hnPVs, hJet1q_pt, hJet1q_eta, hJet1q_ptd, hJet1q_axis2, hJet1q_mult, hJet2q_pt, hJet2q_eta, hJet2q_ptd, hJet2q_axis2, hJet2q_mult, hVtype, hVtypeSim, hmet, hJet1q_leadTrackPt, hJet2q_leadTrackPt, hqq_pt, hqgl, hqgl2,hqglAtanh, hqgl2Atanh, hHll_mass, hHll_pt, hHll_phi, hHll_eta, hrho, hlepton1_pt, hlepton2_pt, hlepton1_eta, hlepton2_eta, hHT, hDeltaRelQQ, hRpt, hRptAtanh, hEtaQQSum, hPhiZQ1, hHll_y, hHll_ystar, hHll_zstar, hMqq_log, hlheV_pt, hlheNpNLO, hJet3_pt, hJet3_pt_log, hlheHT_log, hlheNj, hPhiQQ, hJets12_pt_log, hJets12_pt, hJet1q_pt_log, hJet2q_pt_log, hbdt, hbdt_atanh,hbdt_atanh2 , hlepton1_iso03, hlepton2_iso03, hveto_jet3pt_nom, hveto_jet3pt_denom, hveto_ht_nom, hveto_ht_denom, hveto_softht_nom, hveto_softht_denom, hveto_softpt_nom, hveto_softpt_denom, hJet2q_phi, hJet1q_phi, hNAdJets, hNAdJets_bdt, hJet3_pt_bdt, hAdJetHT_bdt, hNAdJets_bdt2, hJet3_pt_bdt2, hAdJetHT_bdt2, hHTsoftEWK_bdt2,hSoft_n2EWK_bdt2,hSoft_n5EWK_bdt2, hPtSoftJets, hJet1q_eta_bdt, hJet1q_eta_bdt2, hJet2q_eta_bdt, hJet2q_eta_bdt2, hsoftleadTrackPt, hsoftleadTrackEta, hAdJetHT, hJet3_eta, hJet3_etaRatio, hJet3_pt_new , hJet3_eta_bdt, hJet3_eta_bdt2, hBDT_VBF, hBDT_VBF_atanh, hBDT_VBF_atanh_findBinning, hThetaStarJet, hThetaPlanes, hThetaStarJetAtanh, hThetaPlanesAtanh, hThetaStar, hThetaStarAbs, hweights_weighted,hweights,hdeltaMRel,hdeltaM, hnormalizedDistance_from_mH, hHiggsSister1_Leading_eta,hHiggsSister2_Subleading_eta,hHiggsSister1_Leading_phi,hHiggsSister2_Subleading_phi,hHiggsSister1_Leading_R,hHiggsSister2_Subleading_R,hTotalEnergy,hTotalEnergylog,hWWmass,hDiffmass,hpdgId,hgen_mass,hEnergy_fraction_Parton2_log,hEnergy_fraction_Parton1_log, hmumujj_pt, hmumujj_ptLog, hEnergy_fraction_Parton1,hPz,hPzAbs, hPzAbsLog, hInvariant_MassLog, hInvariant_Mass, hthetastar_W2toHW1, hthetastar_W1toHW2,hthetastar_HtoWW, hEnergy_fraction_Parton2, hVirtual_Wmass1,hVirtual_Wmass2,hVirtual_Wmass1_log,hVirtual_Wmass2_log,hVirtual_Pt1,hVirtual_Pt2, hVirtual_Pt1_log, hVirtual_Pt2_log, hVirtual_eta1,hVirtual_eta2,hTheta_HiggsJ1,hTheta_HiggsJ2,hthetastar_W1,hthetastar_W2, hVirtual_phi1, hVirtual_phi2, hParton_M1,hParton_M2, hMaxJetBTagCSV, hMaxJetBTagCMVA, hMaxSecondJetBTagCSV, hMaxSecondJetBTagCMVA, hSelectionCuts,
+        							hMCWeight, hBTagMultipliticy, hBDIscriminator_CSV, hBDIscriminator_CMVAV2, hbtagWeight//}; 
+
+,hjet_pt_collezione, hjet_pt_index, hjet_pt_lead, hjet_eta_collezione, hjet_eta_index, hjet_eta_lead, hmaxBTagFilippo};
+
 //
 //         std::cout << "Length of array = " << (sizeof(histArray)/sizeof(*histArray)) << std::end;
         
@@ -2103,7 +2117,7 @@ if (data==1) Nsyst_NoConst = 1;
 //         reader->BookMVA("BDTG", "/afs/cern.ch/user/a/abonavit/private/tesi/CMSSW_8_0_28/src/code/BDTClassification/trainingForRecoveringJune/Classification_BDTG.weights_JuneOption_ll_mass_Mqq_RptHard_DeltaEtaQQ_llPt_llEta_Jet2qPt_EWKHTsoft.xml");
 //         reader->BookMVA("BDTG", "/afs/cern.ch/user/a/abonavit/private/tesi/CMSSW_8_0_28/src/code/BDTClassification/januaryTraining/Classification_BDTG.weights_80000Event_200Tree_4Deep_mll_Mqq_RptHard_llZstar_softN5_llPt_Wmass2_Wpt1.xml");
 //         reader->BookMVA("BDTG", "/scratch/mandorli/Hmumu/restartFromFilippo/CMSSW_8_0_28/src/code/BDTxml/marchTraining/Classification_BDTG.weights_80000Event_100Tree_2Deep_mll_Mqq_RptHard_llZstar_softN5_Wmass1.xml");
-        reader->BookMVA("BDTG", "/afs/cern.ch/work/f/ferrico/private/Hmumu/CMSSW_8_0_28/src/shared_vbfh-huu_code/Classification_BDTG.weights_35000Event_100Tree_2Deep_mll_MqqLog_Rpt_Wmass1_llZstar_softN5_llPt_Wmass2.xml");
+        reader->BookMVA("BDTG", "Classification_BDTG.weights_35000Event_100Tree_2Deep_mll_MqqLog_Rpt_Wmass1_llZstar_softN5_llPt_Wmass2.xml");
 
 //         reader->BookMVA("MLP", "/scratch/mandorli/Hmumu/restartFromFilippo/CMSSW_8_0_28/src/code/BDTxml/aprilTraining/Classification_MLP.weights_35000Event_mll_MqqLog_Rpt_Wmass1_llZstar_softN5_llPt_Wmass2_qgl1qAtanh.xml");
 
@@ -2136,9 +2150,9 @@ if (data==1) Nsyst_NoConst = 1;
 
 // nentries = 2000;
 
- for (int entry=0; entry<nentries;++entry){
+//  for (int entry=0; entry<nentries;++entry){
 //   for (int entry=0; entry<20000;++entry){
-
+  for (int entry=0; entry<1000000;++entry){
               
         if (entry%10000 == 0) std::cout << "Writing " << entry << "th event" << std::endl;
         tree_initial->GetEntry(entry);
@@ -2298,6 +2312,9 @@ if (data==1) Nsyst_NoConst = 1;
     	int b_Multiplicity = 0;                
         for (int i=0;i<nJets;i++){
 
+			if(Jet.pt[i] < 20) continue;
+			if(Jet.btagCMVA[i] > 0.8) continue;
+			
             TLorentzVector jet0;
             if (!((Jet.id[i]>2)&&(Jet.puId[i]>0))) continue;
             
@@ -2321,6 +2338,8 @@ if (data==1) Nsyst_NoConst = 1;
             if (maxBTagCSV < 0) maxBTagCSV = Jet.btagCSV[i];
             if (maxBTagCSV > 0 && maxSecondBTagCSV < 0) maxSecondBTagCSV = Jet.btagCSV[i];
                 
+
+            
             bool condition = false;
             if (good_jets < 2) condition = true;
             else if (jet0.Eta() < max(jets_pv[0].Eta(), jets_pv[1].Eta()) && jet0.Eta() > min(jets_pv[0].Eta(), jets_pv[1].Eta())) condition = true;  
@@ -2330,23 +2349,25 @@ if (data==1) Nsyst_NoConst = 1;
                 jets_indices.push_back(i);
                 good_jets++;
                 
-            	if(Jet.btagCMVA[i] > 0.8) b_Multiplicity++;
+            	if(Jet.pt[i] > 20 && Jet.btagCMVA[i] > 0.8) b_Multiplicity++;
 //             	if(Jet.pt[i] > 20) btagWeight *= Jet.jet_btagWeightCSV[i];
 //             	if(Jet.pt[i] > 20) btagWeight *= (1 - Jet.jet_btagWeightCSV[i]);
-            	if(Jet.pt[i] > 20) btagWeight *= Jet.jet_btagWeightCMVAV2[i];
+//             	if(Jet.pt[i] > 20) btagWeight *= Jet.jet_btagWeightCMVAV2[i];
 //             	if(Jet.pt[i] > 20) btagWeight *= (1 - Jet.jet_btagWeightCMVAV2[i]);
 
             }
         }
         
-// 		btagWeight = Jet.jet_btagWeightCSV[0] * Jet.jet_btagWeightCSV[1];
-// 		btagWeight = (1 - Jet.jet_btagWeightCSV[0]) * (1 - Jet.jet_btagWeightCSV[1]);
-// 		btagWeight = Jet.jet_btagWeightCMVAV2[0] * Jet.jet_btagWeightCMVAV2[1];
-// 		btagWeight = (1 - Jet.jet_btagWeightCMVAV2[0]) * (1 - Jet.jet_btagWeightCMVAV2[1]);
-
-        
         if (good_jets<2) continue;
         else  ++count2;    
+
+// 		btagWeight = Jet.jet_btagWeightCSV[jets_indices[0]] * Jet.jet_btagWeightCSV[jets_indices[1]];
+// 		btagWeight = (1 - Jet.jet_btagWeightCSV[jets_indices[0]]) * (1 - Jet.jet_btagWeightCSV[jets_indices[1]]);
+
+		btagWeight = Jet.jet_btagWeightCMVAV2[jets_indices[0]] * Jet.jet_btagWeightCMVAV2[jets_indices[1]];
+// 		btagWeight = (1 - Jet.jet_btagWeightCMVAV2[jets_indices[0]]) * (1 - Jet.jet_btagWeightCMVAV2[jets_indices[1]]);
+
+        
 
         
 
@@ -2714,14 +2735,19 @@ if (data==1) Nsyst_NoConst = 1;
                         hSelectionCuts->Fill(15, genweight);
 		}	
 
-		     	hBTagMultipliticy->Fill(b_Multiplicity);
+		     	hBTagMultipliticy->Fill(b_Multiplicity, genweight);
 		    	b_Multiplicity = 0;
 
-                if (maxBTagCMVA > 0.95) continue;
-                if (maxBTagCMVA > 0.8) continue;      //----------------------------------------------------------------------------------------------------
+//                 if (maxBTagCMVA > 0.95) continue;
+hmaxBTagFilippo->Fill(maxBTagCMVA);
+                if (maxBTagCMVA > 8000) continue;      //----------------------------------------------------------------------------------------------------
                 else  ++count13;
-                hSelectionCuts->Fill(16, genweight);
 
+// if(Jet.btagCMVA[jets_indices.at(0)] > 0.8 || Jet.btagCMVA[jets_indices.at(1)] > 0.8)
+// 	std::cout<<" -------------------------------- CAGATA DA QUALCHE PARTE -------------------------------- "<<std::endl;
+
+
+                hSelectionCuts->Fill(16, genweight);
 //		cout<<genweight<<endl;
 
 		presel+=genweight;
@@ -3265,25 +3291,10 @@ if (data==1) Nsyst_NoConst = 1;
                 }
                 
                 
-                
-                
-
-            
+    
             
            hlheNpNLO->Fill(lheNpNLO,genweight);
            
-	    if(data != 1){
-	    	hMCWeight->Fill(genweight);
-	        hBDIscriminator_CSV->Fill(Jet.btagCSV[0], genweight);
-    	    hBDIscriminator_CSV->Fill(Jet.btagCSV[1], genweight);
-			hBDIscriminator_CMVAV2->Fill(Jet.btagCMVA[0], genweight);
-			hBDIscriminator_CMVAV2->Fill(Jet.btagCMVA[1], genweight);
-		}
-	    else{
-	    	hMCWeight->Fill(-999);
-	        hBDIscriminator_CSV->Fill(-999);
-			hBDIscriminator_CMVAV2->Fill(-999);
-		}
 
            
             hdeltaM->Fill(deltaM,genweight);
@@ -3342,7 +3353,7 @@ if (data==1) Nsyst_NoConst = 1;
             hThetaStar->Fill(cosThetaStar,genweight);   
             hThetaStarAbs->Fill(abs(cosThetaStar),genweight);   
             hMaxJetBTagCSV->Fill(maxBTagCSV,genweight);
-            hMaxJetBTagCMVA->Fill(atanhCMVA,genweight);
+            hMaxJetBTagCMVA->Fill(maxBTagCMVA,genweight); //atanhCMVA
             hMaxSecondJetBTagCSV->Fill(maxSecondBTagCSV,genweight);
             hMaxSecondJetBTagCMVA->Fill(maxSecondBTagCMVA,genweight);
 
@@ -3353,6 +3364,39 @@ if (data==1) Nsyst_NoConst = 1;
 			   hqq_pt->Fill(qq_pt,genweight);
 			   hEtaQQ->Fill(qqDeltaEta,genweight);
 		 	   hPhiQQ->Fill(qqDeltaPhi,genweight);
+
+
+/////////// bTag stuff ----- > Filippo
+hjet_pt_collezione->Fill(Jet.pt[0]);
+hjet_pt_index->Fill(Jet.pt[jets_indices[0]]);
+hjet_pt_lead->Fill(jets_pv[0].Pt());
+hjet_eta_collezione->Fill(Jet.eta[0]);
+hjet_eta_index->Fill(Jet.eta[jets_indices[0]]);
+hjet_eta_lead->Fill(jets_pv[0].Eta());
+hjet_pt_collezione->Fill(Jet.pt[1]);
+hjet_pt_index->Fill(Jet.pt[jets_indices[1]]);
+hjet_pt_lead->Fill(jets_pv[1].Pt());
+hjet_eta_collezione->Fill(Jet.eta[1]);
+hjet_eta_index->Fill(Jet.eta[jets_indices[1]]);
+hjet_eta_lead->Fill(jets_pv[1].Eta());
+
+
+	        hBDIscriminator_CSV->Fill(Jet.btagCSV[jets_indices[0]], genweight);
+    	    hBDIscriminator_CSV->Fill(Jet.btagCSV[jets_indices[1]], genweight);
+// 			hBDIscriminator_CMVAV2->Fill(maxBTagCMVA, genweight);
+// 			if(Jet.btagCMVA[jets_indices.at(0)] > Jet.btagCMVA[jets_indices.at(1)])
+				hBDIscriminator_CMVAV2->Fill(Jet.btagCMVA[jets_indices.at(0)], genweight);
+// 			else
+			hBDIscriminator_CMVAV2->Fill(Jet.btagCMVA[jets_indices.at(1)], genweight);
+           
+		    if(data != 1){
+		    	hMCWeight->Fill(genweight);
+			}
+		    else{
+		    	hMCWeight->Fill(-999);
+			}
+/////////// bTag stuff ----- > Filippo
+
 		   	hHll_mass->Fill(Zll_mass,genweight);
 		   	hHll_pt->Fill(Zll_pt,genweight);
 		   	hHll_phi->Fill(Zll_phi,genweight);
