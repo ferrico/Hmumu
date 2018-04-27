@@ -171,6 +171,8 @@ typedef struct {
     Float_t JER_corr[njets];
     Float_t JER_corr_up[njets];
     Float_t JER_corr_down[njets];
+    Float_t BTagJES_corr_up[njets];
+    Float_t BTagJES_corr_down[njets];
     Float_t phi[njets];
 	Float_t mass[njets];
 	Float_t btagCSV[njets];
@@ -329,6 +331,8 @@ TString JESWeight_str = std::string(argv[8]);
 TString heppyVersion = std::string(argv[9]);
 TString postfix = std::string(argv[10]);
 TString output = std::string(argv[11]);
+TString bTagJESWeight_str = std::string(argv[12]);
+
 
 bool MVAtree_to_fill = false;
 if ( ((QCDScaleWeight_str.CompareTo("none")==0)||(QCDScaleWeight_str.CompareTo("nom")==0)) && ((JESWeight_str.CompareTo("none")==0)||(JESWeight_str.CompareTo("nom")==0)) ) MVAtree_to_fill = true;
@@ -650,6 +654,11 @@ int whichJERWeight = 0;
 if ((JESWeight_str.CompareTo("up")==0) && (QCDScaleWeight_str.CompareTo("up")==0)) whichJERWeight=1;
 if ((JESWeight_str.CompareTo("down")==0) && (QCDScaleWeight_str.CompareTo("down")==0)) whichJERWeight=2;
 
+int whichbTagJEScaleWeight = 0;
+if (bTagJESWeight_str.CompareTo("up")==0) whichbTagJEScaleWeight=1;
+if (bTagJESWeight_str.CompareTo("down")==0) whichbTagJEScaleWeight=2;
+
+
 
 float gen_pos=0; 
 float gen_neg=0; 
@@ -905,6 +914,8 @@ Float_t LHE_weights_scale_wgt[10];
     tree_initial->SetBranchAddress("Jet_corr_JERUp",Jet.JER_corr_up);
     tree_initial->SetBranchAddress("Jet_corr_JERDown",Jet.JER_corr_down);
     tree_initial->SetBranchAddress("Jet_corr_JER",Jet.JER_corr);
+    tree_initial->SetBranchAddress("Jet_btagWeightCMVAV2_up_jes",Jet.BTagJES_corr_up);
+    tree_initial->SetBranchAddress("Jet_btagWeightCMVAV2_down_jes",Jet.BTagJES_corr_down);
     tree_initial->SetBranchAddress("Jet_eta",Jet.eta);
     tree_initial->SetBranchAddress("Jet_phi",Jet.phi);
 	tree_initial->SetBranchAddress("Jet_mass",Jet.mass);
@@ -2313,12 +2324,17 @@ if (data==1) Nsyst_NoConst = 1;
         for (int i=0;i<nJets;i++){
 
 			if(Jet.pt[i] < 20) continue;
-			if(Jet.btagCMVA[i] > 0.8) continue;
 			
             TLorentzVector jet0;
             if (!((Jet.id[i]>2)&&(Jet.puId[i]>0))) continue;
-            
+
+           	if(Jet.btagCMVA[i] > 0.8) b_Multiplicity++;
+
+			if(Jet.btagCMVA[i] > 0.8) continue;
             jet0.SetPtEtaPhiM(Jet.pt[i],Jet.eta[i],Jet.phi[i],Jet.mass[i]);
+
+			if(whichbTagJEScaleWeight = 1) btagWeight*=Jet.BTagJES_corr_up[i];
+			if(whichbTagJEScaleWeight = 2) btagWeight*=Jet.BTagJES_corr_down[i];
 
 //             if (maxBTagCSV < Jet.btagCSV[i]) {
 //                 maxSecondBTagCSV = maxBTagCSV;
@@ -2349,7 +2365,6 @@ if (data==1) Nsyst_NoConst = 1;
                 jets_indices.push_back(i);
                 good_jets++;
                 
-            	if(Jet.pt[i] > 20 && Jet.btagCMVA[i] > 0.8) b_Multiplicity++;
 //             	if(Jet.pt[i] > 20) btagWeight *= Jet.jet_btagWeightCSV[i];
 //             	if(Jet.pt[i] > 20) btagWeight *= (1 - Jet.jet_btagWeightCSV[i]);
 //             	if(Jet.pt[i] > 20) btagWeight *= Jet.jet_btagWeightCMVAV2[i];
@@ -2364,8 +2379,8 @@ if (data==1) Nsyst_NoConst = 1;
 // 		btagWeight = Jet.jet_btagWeightCSV[jets_indices[0]] * Jet.jet_btagWeightCSV[jets_indices[1]];
 // 		btagWeight = (1 - Jet.jet_btagWeightCSV[jets_indices[0]]) * (1 - Jet.jet_btagWeightCSV[jets_indices[1]]);
 
-		btagWeight = Jet.jet_btagWeightCMVAV2[jets_indices[0]] * Jet.jet_btagWeightCMVAV2[jets_indices[1]];
-// 		btagWeight = (1 - Jet.jet_btagWeightCMVAV2[jets_indices[0]]) * (1 - Jet.jet_btagWeightCMVAV2[jets_indices[1]]);
+// 		btagWeight = Jet.jet_btagWeightCMVAV2[jets_indices[0]] * Jet.jet_btagWeightCMVAV2[jets_indices[1]];
+		btagWeight = (1 - Jet.jet_btagWeightCMVAV2[jets_indices[0]]) * (1 - Jet.jet_btagWeightCMVAV2[jets_indices[1]]);
 
         
 
@@ -3723,7 +3738,8 @@ hjet_eta_lead->Fill(jets_pv[1].Eta());
 ///////////////////////////////////// Writing the output file  ////////////////////////////
 
 		//cout << "Number of events that passed the perselection: " << counter<<endl;
-		TFile file(output+"/"+file_tag+"_"+region+"_QCDScale"+QCDScaleWeight_str+"_JES"+JESWeight_str+"_"+heppyVersion+"_"+postfix+".root","recreate");
+// 		TFile file(output+"/"+file_tag+"_"+region+"_QCDScale"+QCDScaleWeight_str+"_JES"+JESWeight_str+"_"+heppyVersion+"_"+postfix+".root","recreate");
+		TFile file(output+"/"+file_tag+"_"+region+"_QCDScale"+QCDScaleWeight_str+"_JES"+JESWeight_str+"_bTagJES"+bTagJESWeight_str+"_"+heppyVersion+"_"+postfix+".root","recreate");		
 // 		TFile file(output+"/"+file_tag+"_"+region+"_QCDScale"+QCDScaleWeight_str+"_JES"+JESWeight_str+"_"+heppyVersion+"_"+postfix+"_noQGLcorrection.root","recreate");
 
 
@@ -3785,7 +3801,7 @@ hjet_eta_lead->Fill(jets_pv[1].Eta());
     		file.Write();
     		file.Close();
 
-	 ofstream out(output+"/"+file_tag+"_"+region+"_QCDScale"+QCDScaleWeight_str+"_JES"+JESWeight_str+"_"+heppyVersion+"_"+postfix+".txt");
+	 ofstream out(output+"/"+file_tag+"_"+region+"_QCDScale"+QCDScaleWeight_str+"_JES"+JESWeight_str+"_bTagJES"+bTagJESWeight_str+"_"+heppyVersion+"_"+postfix+".txt");
 	out<< "positive pure selected = "<<gen_pos<<"  , positive weighted selected =  "<<gen_pos_weight<<" , negative pure selected = "<<gen_neg<< ", negative weighted selected = "<<gen_neg_weight<< ", all evetns in the begining = "<<events_generated<<" , xsec = "<<xsec[file_tag]<<endl;
 	out<<"positive weight in so many events : "<<  pos_weight_presel<<endl;
 

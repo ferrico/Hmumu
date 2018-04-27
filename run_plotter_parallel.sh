@@ -3,8 +3,56 @@
 
 QCDcorrection=$1
 JEScorrection=$2
+bTagWeightJEScorrection=$3
 
 # echo QCDcorrection $QCDcorrection "     " JEScorrection $JEScorrection "     " bTagWeightJEScorrection;
+
+#########################################################################################################
+#########################################################################################################
+#########################################################################################################
+# echo "DYJetstoLL_amc_2J"
+# 				./plot /afs/cern.ch/work/g/gimandor/public/Hmumu_nTuples/DYJetstoLL_amc_0J_v25_reskim.root DYJetstoLL_amc_0J mu  0 0 $QCDcorrection 0 $JEScorrection  v25 reskim histoFileDir;
+# 				./plot /afs/cern.ch/work/g/gimandor/public/Hmumu_nTuples/DYJetstoLL_amc_1J_v25_reskim.root DYJetstoLL_amc_1J mu  0 0 $QCDcorrection 0 $JEScorrection  v25 reskim histoFileDir;
+# 				./plot /afs/cern.ch/work/g/gimandor/public/Hmumu_nTuples/DYJetstoLL_amc_2J_v25_reskim.root DYJetstoLL_amc_2J mu  0 0 $QCDcorrection 0 $JEScorrection  v25 reskim histoFileDir;
+# 				./plot /afs/cern.ch/work/g/gimandor/public/Hmumu_nTuples/DYJetstoLL_amc_Filter105_v25_reskim.root DYJetstoLL_amc_Filter105 mu  0 0 $QCDcorrection 0 $JEScorrection  v25 reskim histoFileDir;
+# 
+# ./plot /afs/cern.ch/work/g/gimandor/public/Hmumu_nTuples/DYJetsToLL_M-105To160-amcatnloFXFX_v25_reskim.root DYJetstoLL_amc_Filter105 mu  0 0 $QCDcorrection 0 $JEScorrection  v25 reskim histoFileDir;
+# # echo "End DYJetstoLL_amc_2J"
+# 
+# 
+#  echo "Data"
+# ./plot /afs/cern.ch/work/g/gimandor/public/Hmumu_nTuples/sampleWithout_Jet_btagWeight_and_btag_weights/SingleMuon_reminiaod_v25.root SingleMuon mu  1 0 $QCDcorrection 0 $JEScorrection  v25 reskim histoFileDir;
+#  echo "End Data"
+# 
+# 
+#   echo "Single Top"
+# ./plot /afs/cern.ch/work/g/gimandor/public/Hmumu_nTuples/ST_tW_top_v25_reskim.root ST_tW_top mu  0 0 $QCDcorrection 0 $JEScorrection  v25 reskim histoFileDir;
+# ./plot /afs/cern.ch/work/g/gimandor/public/Hmumu_nTuples/ST_tW_antitop_v25_reskim.root ST_tW_antitop mu  0 0 $QCDcorrection 0 $JEScorrection  v25 reskim histoFileDir;
+# ./plot /afs/cern.ch/work/g/gimandor/public/Hmumu_nTuples/ST_s_v25_reskim.root ST_s-channel mu  0 0 $QCDcorrection 0 $JEScorrection  v25 reskim histoFileDir;
+# ./plot /afs/cern.ch/work/g/gimandor/public/Hmumu_nTuples/ST_t_top_v25_reskim.root ST_t-channel_top_4f_inclusiveDecays mu  0 0 $QCDcorrection 0 $JEScorrection  v25 reskim histoFileDir;
+# ./plot /afs/cern.ch/work/g/gimandor/public/Hmumu_nTuples/ST_t_antitop_v25_reskim.root ST_t-channel_antitop_4f_inclusiveDecays mu  0 0 $QCDcorrection 0 $JEScorrection  v25 reskim histoFileDir;
+#   echo "End Single Top"
+# 
+# 
+#   echo "TT and Diboson"
+# ./plot /afs/cern.ch/work/g/gimandor/public/Hmumu_nTuples/TT_v25_reskim.root TT mu  0 0 $QCDcorrection 0 $JEScorrection  v25 reskim histoFileDir;
+# ./plot /afs/cern.ch/work/g/gimandor/public/Hmumu_nTuples/WW_v25_reskim.root WW mu  0 0 $QCDcorrection 0 $JEScorrection  v25 reskim histoFileDir;
+# ./plot /afs/cern.ch/work/g/gimandor/public/Hmumu_nTuples/WZ_v25_reskim.root WZ mu  0 0 $QCDcorrection 0 $JEScorrection  v25 reskim histoFileDir;
+# ./plot /afs/cern.ch/work/g/gimandor/public/Hmumu_nTuples/ZZ_v25_reskim.root ZZ mu  0 0 $QCDcorrection 0 $JEScorrection  v25 reskim histoFileDir;
+# ./plot /afs/cern.ch/work/g/gimandor/public/Hmumu_nTuples/WJetsToLnu_madgraph_v25_reskim.root WJetsToLNu mu  0 0 $QCDcorrection 0 $JEScorrection  v25 reskim histoFileDir;
+#  echo "End TT and Diboson"
+# 
+# 
+#  echo "Signal"
+#  #### per training####
+# ./plot /afs/cern.ch/work/g/gimandor/public/Hmumu_nTuples/VBF_HToMuMu_v25_reskim.root VBF_HToMuMu mu  0 0 $QCDcorrection 0 $JEScorrection  v25 reskim histoFileDir;
+#  #### per training####
+# ./plot /afs/cern.ch/work/g/gimandor/public/Hmumu_nTuples/GluGlu_HToMuMu_v25_reskim.root GluGlu_HToMuMu mu  0 0 $QCDcorrection 0 $JEScorrection  v25 reskim histoFileDir;
+#  echo "End Signal"
+#########################################################################################################
+#########################################################################################################
+#########################################################################################################
+
 
 
 # echo "DYJetstoLL_amc_2J"
@@ -13,46 +61,45 @@ JEScorrection=$2
 # ./plot /afs/cern.ch/work/g/gimandor/public/Hmumu_nTuples/DYJetstoLL_amc_2J_v25_reskim.root DYJetstoLL_amc_2J mu  0 0 $QCDcorrection 0 $JEScorrection  v25 reskim histoFileDir;
 # ./plot /afs/cern.ch/work/g/gimandor/public/Hmumu_nTuples/DYJetstoLL_amc_Filter105_v25_reskim.root DYJetstoLL_amc_Filter105 mu  0 0 $QCDcorrection 0 $JEScorrection  v25 reskim histoFileDir;
 
-./plot /afs/cern.ch/work/g/gimandor/public/Hmumu_nTuples/DYJetsToLL_M-105To160-amcatnloFXFX_v25_reskim.root DYJetstoLL_amc_Filter105 mu  0 0 $QCDcorrection 0 $JEScorrection  v25 reskim histoFileDir;
+./plot /afs/cern.ch/work/g/gimandor/public/Hmumu_nTuples/DYJetsToLL_M-105To160-amcatnloFXFX_v25_reskim.root DYJetstoLL_amc_Filter105 mu  0 0 $QCDcorrection 0 $JEScorrection  v25 reskim histoFileDir $bTagWeightJEScorrection,
 # echo "End DYJetstoLL_amc_2J"
 
 
  echo "Data"
-./plot /afs/cern.ch/work/g/gimandor/public/Hmumu_nTuples/sampleWithout_Jet_btagWeight_and_btag_weights/SingleMuon_reminiaod_v25.root SingleMuon mu  1 0 $QCDcorrection 0 $JEScorrection  v25 reskim histoFileDir;
+./plot /afs/cern.ch/work/g/gimandor/public/Hmumu_nTuples/sampleWithout_Jet_btagWeight_and_btag_weights/SingleMuon_reminiaod_v25.root SingleMuon mu  1 0 $QCDcorrection 0 $JEScorrection  v25 reskim histoFileDir $bTagWeightJEScorrection,
  echo "End Data"
 
 
   echo "Single Top"
-./plot /afs/cern.ch/work/g/gimandor/public/Hmumu_nTuples/ST_tW_top_v25_reskim.root ST_tW_top mu  0 0 $QCDcorrection 0 $JEScorrection  v25 reskim histoFileDir;
-./plot /afs/cern.ch/work/g/gimandor/public/Hmumu_nTuples/ST_tW_antitop_v25_reskim.root ST_tW_antitop mu  0 0 $QCDcorrection 0 $JEScorrection  v25 reskim histoFileDir;
-./plot /afs/cern.ch/work/g/gimandor/public/Hmumu_nTuples/ST_s_v25_reskim.root ST_s-channel mu  0 0 $QCDcorrection 0 $JEScorrection  v25 reskim histoFileDir;
-./plot /afs/cern.ch/work/g/gimandor/public/Hmumu_nTuples/ST_t_top_v25_reskim.root ST_t-channel_top_4f_inclusiveDecays mu  0 0 $QCDcorrection 0 $JEScorrection  v25 reskim histoFileDir;
-./plot /afs/cern.ch/work/g/gimandor/public/Hmumu_nTuples/ST_t_antitop_v25_reskim.root ST_t-channel_antitop_4f_inclusiveDecays mu  0 0 $QCDcorrection 0 $JEScorrection  v25 reskim histoFileDir;
+./plot /afs/cern.ch/work/g/gimandor/public/Hmumu_nTuples/ST_tW_top_v25_reskim.root ST_tW_top mu  0 0 $QCDcorrection 0 $JEScorrection  v25 reskim histoFileDir $bTagWeightJEScorrection,
+./plot /afs/cern.ch/work/g/gimandor/public/Hmumu_nTuples/ST_tW_antitop_v25_reskim.root ST_tW_antitop mu  0 0 $QCDcorrection 0 $JEScorrection  v25 reskim histoFileDir $bTagWeightJEScorrection,
+./plot /afs/cern.ch/work/g/gimandor/public/Hmumu_nTuples/ST_s_v25_reskim.root ST_s-channel mu  0 0 $QCDcorrection 0 $JEScorrection  v25 reskim histoFileDir $bTagWeightJEScorrection,
+./plot /afs/cern.ch/work/g/gimandor/public/Hmumu_nTuples/ST_t_top_v25_reskim.root ST_t-channel_top_4f_inclusiveDecays mu  0 0 $QCDcorrection 0 $JEScorrection  v25 reskim histoFileDir $bTagWeightJEScorrection,
+./plot /afs/cern.ch/work/g/gimandor/public/Hmumu_nTuples/ST_t_antitop_v25_reskim.root ST_t-channel_antitop_4f_inclusiveDecays mu  0 0 $QCDcorrection 0 $JEScorrection  v25 reskim histoFileDir $bTagWeightJEScorrection,
   echo "End Single Top"
 
 
   echo "TT and Diboson"
-./plot /afs/cern.ch/work/g/gimandor/public/Hmumu_nTuples/TT_v25_reskim.root TT mu  0 0 $QCDcorrection 0 $JEScorrection  v25 reskim histoFileDir;
-./plot /afs/cern.ch/work/g/gimandor/public/Hmumu_nTuples/WW_v25_reskim.root WW mu  0 0 $QCDcorrection 0 $JEScorrection  v25 reskim histoFileDir;
-./plot /afs/cern.ch/work/g/gimandor/public/Hmumu_nTuples/WZ_v25_reskim.root WZ mu  0 0 $QCDcorrection 0 $JEScorrection  v25 reskim histoFileDir;
-./plot /afs/cern.ch/work/g/gimandor/public/Hmumu_nTuples/ZZ_v25_reskim.root ZZ mu  0 0 $QCDcorrection 0 $JEScorrection  v25 reskim histoFileDir;
-./plot /afs/cern.ch/work/g/gimandor/public/Hmumu_nTuples/WJetsToLnu_madgraph_v25_reskim.root WJetsToLNu mu  0 0 $QCDcorrection 0 $JEScorrection  v25 reskim histoFileDir;
+./plot /afs/cern.ch/work/g/gimandor/public/Hmumu_nTuples/TT_v25_reskim.root TT mu  0 0 $QCDcorrection 0 $JEScorrection  v25 reskim histoFileDir $bTagWeightJEScorrection,
+./plot /afs/cern.ch/work/g/gimandor/public/Hmumu_nTuples/WW_v25_reskim.root WW mu  0 0 $QCDcorrection 0 $JEScorrection  v25 reskim histoFileDir $bTagWeightJEScorrection,
+./plot /afs/cern.ch/work/g/gimandor/public/Hmumu_nTuples/WZ_v25_reskim.root WZ mu  0 0 $QCDcorrection 0 $JEScorrection  v25 reskim histoFileDir $bTagWeightJEScorrection,
+./plot /afs/cern.ch/work/g/gimandor/public/Hmumu_nTuples/ZZ_v25_reskim.root ZZ mu  0 0 $QCDcorrection 0 $JEScorrection  v25 reskim histoFileDir $bTagWeightJEScorrection,
+./plot /afs/cern.ch/work/g/gimandor/public/Hmumu_nTuples/WJetsToLnu_madgraph_v25_reskim.root WJetsToLNu mu  0 0 $QCDcorrection 0 $JEScorrection  v25 reskim histoFileDir $bTagWeightJEScorrection,
  echo "End TT and Diboson"
 
 
  echo "Signal"
  #### per training####
-./plot /afs/cern.ch/work/g/gimandor/public/Hmumu_nTuples/VBF_HToMuMu_v25_reskim.root VBF_HToMuMu mu  0 0 $QCDcorrection 0 $JEScorrection  v25 reskim histoFileDir;
+./plot /afs/cern.ch/work/g/gimandor/public/Hmumu_nTuples/VBF_HToMuMu_v25_reskim.root VBF_HToMuMu mu  0 0 $QCDcorrection 0 $JEScorrection  v25 reskim histoFileDir $bTagWeightJEScorrection,
  #### per training####
-./plot /afs/cern.ch/work/g/gimandor/public/Hmumu_nTuples/GluGlu_HToMuMu_v25_reskim.root GluGlu_HToMuMu mu  0 0 $QCDcorrection 0 $JEScorrection  v25 reskim histoFileDir;
+./plot /afs/cern.ch/work/g/gimandor/public/Hmumu_nTuples/GluGlu_HToMuMu_v25_reskim.root GluGlu_HToMuMu mu  0 0 $QCDcorrection 0 $JEScorrection  v25 reskim histoFileDir $bTagWeightJEScorrection,
  echo "End Signal"
 
 
 #######done
-
-
-
-
+#########################################################################################################
+#########################################################################################################
+#########################################################################################################
 
 
 

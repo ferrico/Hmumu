@@ -12,14 +12,14 @@ g++ ./plotter_vbfzll.C -g -o plot `root-config --cflags --glibs`   -lMLP -lXMLIO
 # JEScorrection=up
 # JEScorrection=down
 
-QCDcorrectionARRAY=(nom)
-# up down nom nom)
-# nom nom nom nom)
-JEScorrectionARRAY=(nom)
-# nom nom up down)
-# nom nom nom nom)
-# bTagWeightJESARRAY=(nom nom nom nom nom up down nom nom)
-# bTagWeightLFARRAY=(nom nom nom nom nom nom nom up down)
+QCDcorrectionARRAY=(nom up down nom nom nom nom)
+# nom nom)
+JEScorrectionARRAY=(nom nom nom up down nom nom)
+# nom nom)
+bTagWeightJESARRAY=(nom nom nom nom nom up down)
+# nom nom)
+# bTagWeightLFARRAY=(nom nom nom nom nom nom nom)
+# up down)
 # bTagWeightHFARRAY=
 # bTagWeightLFSTATS1ARRAY=
 # bTagWeightLFSTATS2ARRAY=
@@ -29,14 +29,17 @@ JEScorrectionARRAY=(nom)
 # bTagWeightCFERR2ARRAY=
 
 
-# for i in $(seq 0 1 8 ); do QCDcorrection=${QCDcorrectionARRAY[$i]}; JEScorrection=${JEScorrectionARRAY[$i]}; bTagWeightJEScorrection=${bTagWeightJESARRAY[$i]}; bTagWeightLFcorrection=${bTagWeightLFARRAY[$i]};
-# echo run_plotter_parallel.sh $QCDcorrection $JEScorrection $bTagWeightJEScorrection $bTagWeightLFcorrection;
-# source run_plotter_parallel.sh $QCDcorrection $JEScorrection $bTagWeightJEScorrection $bTagWeightLFcorrection&
-# done
-for i in $(seq 0 1 1); do QCDcorrection=${QCDcorrectionARRAY[$i]}; JEScorrection=${JEScorrectionARRAY[$i]};
-echo run_plotter_parallel.sh $QCDcorrection $JEScorrection;
-source run_plotter_parallel.sh $QCDcorrection $JEScorrection
+for i in $(seq 0 1 6 ); do QCDcorrection=${QCDcorrectionARRAY[$i]}; JEScorrection=${JEScorrectionARRAY[$i]}; bTagWeightJEScorrection=${bTagWeightJESARRAY[$i]}; 
+#bTagWeightLFcorrection=${bTagWeightLFARRAY[$i]};
+echo run_plotter_parallel.sh $QCDcorrection $JEScorrection $bTagWeightJEScorrection 
+#$bTagWeightLFcorrection;
+source run_plotter_parallel.sh $QCDcorrection $JEScorrection $bTagWeightJEScorrection 
+#$bTagWeightLFcorrection&
 done
+# for i in $(seq 0 1 1); do QCDcorrection=${QCDcorrectionARRAY[$i]}; JEScorrection=${JEScorrectionARRAY[$i]};
+# echo run_plotter_parallel.sh $QCDcorrection $JEScorrection;
+# source run_plotter_parallel.sh $QCDcorrection $JEScorrection
+# done
 
 
 
